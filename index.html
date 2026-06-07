@@ -44,13 +44,24 @@
       font-size: 44px;
       z-index: 1;
       animation: floatIcon linear infinite;
-      pointer-events: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .floating-icon.popped {
+      animation: popBalloon 0.35s ease forwards !important;
     }
 
     @keyframes floatIcon {
       0% { transform: translateY(0) rotate(0deg); opacity: 0; }
       10% { opacity: 1; }
       100% { transform: translateY(-125vh) rotate(18deg); opacity: 0; }
+    }
+
+    @keyframes popBalloon {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.8) rotate(15deg); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
     }
 
     .page {
@@ -512,17 +523,38 @@
       container.appendChild(el);
     }
 
-    for (let i = 0; i < 12; i++) {
+    let currentFloatingIcon = '🐷🎈';
+
+    function createFloatingIcon() {
       const icon = document.createElement('div');
+
       icon.className = 'floating-icon';
-      icon.textContent = '🐷🎈';
+      icon.textContent = currentFloatingIcon;
+
       icon.style.left = Math.random() * 100 + '%';
       icon.style.animationDuration = (Math.random() * 8 + 10) + 's';
-      icon.style.animationDelay = Math.random() * 10 + 's';
+      icon.style.animationDelay = Math.random() * 4 + 's';
+
+      icon.addEventListener('click', () => {
+        icon.classList.add('popped');
+        icon.textContent = '💥';
+
+        setTimeout(() => {
+          icon.remove();
+          createFloatingIcon();
+        }, 350);
+      });
+
       document.body.appendChild(icon);
     }
 
+    for (let i = 0; i < 12; i++) {
+      createFloatingIcon();
+    }
+
     function updateFloatingIcons(icon) {
+      currentFloatingIcon = icon;
+
       document.querySelectorAll('.floating-icon').forEach(el => {
         el.textContent = icon;
       });
