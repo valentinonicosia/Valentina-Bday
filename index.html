@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Valentina's 11th Birthday Party! 🐷🎉</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -78,7 +79,7 @@
     }
 
     .top-banner::before {
-      content: '🐷';
+      content: var(--side-icon, '🐷');
       position: absolute;
       left: 16px;
       top: 50%;
@@ -86,7 +87,7 @@
     }
 
     .top-banner::after {
-      content: '🐷';
+      content: var(--side-icon, '🐷');
       position: absolute;
       right: 16px;
       top: 50%;
@@ -131,6 +132,29 @@
       box-shadow: 0 8px 18px rgba(249, 115, 154, 0.35);
     }
 
+    .theme-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .theme-buttons button {
+      border: none;
+      border-radius: 16px;
+      padding: 12px 10px;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .bunny-btn { background: #b983ff; }
+    .piggy-btn { background: #f9739a; }
+    .sparkly-btn { background: #f7b801; color: #6b3b00 !important; }
+    .rainbow-btn { background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff); }
+
     .funny-msg {
       background: #ffd8e9;
       border-radius: 18px;
@@ -167,19 +191,6 @@
       font-family: 'Fredoka One', cursive;
       color: #c0325e;
       font-size: 25px;
-    }
-
-    .music-btn {
-      margin-top: 14px;
-      background: #f9739a;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 14px;
-      font-weight: 900;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(249, 115, 154, 0.28);
     }
 
     .details-grid {
@@ -302,6 +313,88 @@
       color: #f9a8cb;
     }
 
+    body.bunny {
+      background: linear-gradient(180deg, #f1e6ff, #fffaff);
+    }
+
+    body.bunny .card {
+      border-color: #c8a2ff;
+      background: #fbf6ff;
+    }
+
+    body.bunny .top-banner,
+    body.bunny .age-badge,
+    body.bunny .rsvp-section {
+      background: #b983ff;
+    }
+
+    body.bunny .main-title,
+    body.bunny .detail-value {
+      color: #7b3fc4;
+    }
+
+    body.bunny .subtitle,
+    body.bunny .detail-label,
+    body.bunny .countdown-title {
+      color: #9b5de5;
+    }
+
+    body.bunny .funny-msg {
+      background: #efe1ff;
+      border-color: #c8a2ff;
+    }
+
+    body.bunny .funny-msg p,
+    body.bunny .countdown-time {
+      color: #7b3fc4;
+    }
+
+    body.sparkly {
+      background: linear-gradient(180deg, #fff5d6, #fffdf5);
+    }
+
+    body.sparkly .card {
+      border-color: #f7b801;
+      background: #fffaf0;
+    }
+
+    body.sparkly .top-banner,
+    body.sparkly .age-badge,
+    body.sparkly .rsvp-section {
+      background: #f7b801;
+    }
+
+    body.sparkly .top-banner p,
+    body.sparkly .age-badge,
+    body.sparkly .rsvp-title,
+    body.sparkly .phone-small,
+    body.sparkly .rsvp-note {
+      color: #6b3b00;
+    }
+
+    body.sparkly .main-title,
+    body.sparkly .detail-value,
+    body.sparkly .funny-msg p,
+    body.sparkly .countdown-time {
+      color: #9c6500;
+    }
+
+    body.sparkly .subtitle,
+    body.sparkly .detail-label,
+    body.sparkly .countdown-title {
+      color: #d99000;
+    }
+
+    body.rainbow {
+      background: linear-gradient(180deg, #ffe1e1, #fff7cc, #e1ffe8, #e7f0ff);
+    }
+
+    body.rainbow .top-banner,
+    body.rainbow .age-badge,
+    body.rainbow .rsvp-section {
+      background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff);
+    }
+
     @media (max-width: 420px) {
       .card { padding: 28px 18px 32px; }
       .main-title { font-size: 38px; }
@@ -325,18 +418,24 @@
 
       <div class="title-block">
         <div class="subtitle">✨ Join us for a ✨</div>
-        <div class="main-title">Valentina's<br>Piggy Party!</div>
+        <div class="main-title" id="mainTitle">Valentina's<br>Piggy Party!</div>
         <div class="age-badge">🎉 Turning 11! 🎉</div>
       </div>
 
+      <div class="theme-buttons">
+        <button class="bunny-btn" onclick="setTheme('bunny')">🐰 Bunny Theme</button>
+        <button class="piggy-btn" onclick="setTheme('piggy')">🐷 Piggy Theme</button>
+        <button class="sparkly-btn" onclick="setTheme('sparkly')">✨ Sparkly Theme</button>
+        <button class="rainbow-btn" onclick="setTheme('rainbow')">🌈 Rainbow Theme</button>
+      </div>
+
       <div class="funny-msg">
-        <p>I really hope you can come and enjoy! 🥰🐷🎀</p>
+        <p id="themeMessage">I really hope you can come and enjoy! 🥰🐷🎀</p>
       </div>
 
       <div class="countdown">
         <div class="countdown-title">🎂 Countdown to Valentina's party!</div>
         <div class="countdown-time" id="countdown">Loading...</div>
-        <button class="music-btn" onclick="playBirthdaySong()">🎵 Play Party Music</button>
       </div>
 
       <div class="details-grid">
@@ -347,9 +446,9 @@
         </div>
 
         <div class="detail-card">
-          <span class="detail-icon">🐷</span>
+          <span class="detail-icon" id="themeIcon">🐷</span>
           <div class="detail-label">Theme</div>
-          <div class="detail-value">Piggy Party!<br>🐷🎀🌸</div>
+          <div class="detail-value" id="themeName">Piggy Party!<br>🐷🎀🌸</div>
         </div>
 
         <div class="detail-card full">
@@ -368,11 +467,11 @@
       </div>
 
       <div class="rsvp-section">
-        <div class="rsvp-title">🐷 RSVP — Let us know you're coming!</div>
+        <div class="rsvp-title">RSVP — Let us know you're coming!</div>
 
         <a
           class="whatsapp-btn"
-          href="https://wa.me/32472842331?text=Hi!%20I%20would%20love%20to%20come%20to%20Valentina's%20Piggy%20Party!%20🐷🎉"
+          href="https://wa.me/32472842331?text=Hi!%20I%20would%20love%20to%20come%20to%20Valentina's%20Birthday%20Party!%20🎉"
           target="_blank">
           💬 RSVP via WhatsApp
         </a>
@@ -381,7 +480,7 @@
         <div class="rsvp-note">Please reply soon so we can save your spot! 🎀</div>
       </div>
 
-      <div class="bottom-pigs">🐷🐷🐷🐷🐷</div>
+      <div class="bottom-pigs" id="bottomIcons">🐷🐷🐷🐷🐷</div>
       <div class="stars">★ ★ ★ ★ ★ ★ ★</div>
 
     </div>
@@ -412,13 +511,13 @@
     }
 
     for (let i = 0; i < 12; i++) {
-      const pig = document.createElement('div');
-      pig.className = 'pig-balloon';
-      pig.textContent = '🐷🎈';
-      pig.style.left = Math.random() * 100 + '%';
-      pig.style.animationDuration = (Math.random() * 8 + 10) + 's';
-      pig.style.animationDelay = Math.random() * 10 + 's';
-      document.body.appendChild(pig);
+      const balloon = document.createElement('div');
+      balloon.className = 'pig-balloon';
+      balloon.textContent = '🐷🎈';
+      balloon.style.left = Math.random() * 100 + '%';
+      balloon.style.animationDuration = (Math.random() * 8 + 10) + 's';
+      balloon.style.animationDelay = Math.random() * 10 + 's';
+      document.body.appendChild(balloon);
     }
 
     function updateCountdown() {
@@ -443,9 +542,50 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    function playBirthdaySong() {
-      const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-      audio.play();
+    function setTheme(theme) {
+      document.body.className = theme === 'piggy' ? '' : theme;
+
+      const title = document.getElementById('mainTitle');
+      const message = document.getElementById('themeMessage');
+      const icon = document.getElementById('themeIcon');
+      const name = document.getElementById('themeName');
+      const bottom = document.getElementById('bottomIcons');
+
+      if (theme === 'bunny') {
+        document.documentElement.style.setProperty('--side-icon', "'🐰'");
+        title.innerHTML = "Valentina's<br>Bunny Party!";
+        message.innerHTML = "Hop on over for birthday fun! 🐰🎀✨";
+        icon.innerHTML = "🐰";
+        name.innerHTML = "Bunny Party!<br>🐰🎀🌸";
+        bottom.innerHTML = "🐰🐰🐰🐰🐰";
+      }
+
+      if (theme === 'piggy') {
+        document.documentElement.style.setProperty('--side-icon', "'🐷'");
+        title.innerHTML = "Valentina's<br>Piggy Party!";
+        message.innerHTML = "I really hope you can come and enjoy! 🥰🐷🎀";
+        icon.innerHTML = "🐷";
+        name.innerHTML = "Piggy Party!<br>🐷🎀🌸";
+        bottom.innerHTML = "🐷🐷🐷🐷🐷";
+      }
+
+      if (theme === 'sparkly') {
+        document.documentElement.style.setProperty('--side-icon', "'✨'");
+        title.innerHTML = "Valentina's<br>Sparkly Party!";
+        message.innerHTML = "Get ready for sparkles, smiles and birthday magic! ✨🎀💖";
+        icon.innerHTML = "✨";
+        name.innerHTML = "Sparkly Party!<br>✨🎀💖";
+        bottom.innerHTML = "✨✨✨✨✨";
+      }
+
+      if (theme === 'rainbow') {
+        document.documentElement.style.setProperty('--side-icon', "'🌈'");
+        title.innerHTML = "Valentina's<br>Rainbow Party!";
+        message.innerHTML = "A colorful birthday party full of fun! 🌈🎉💖";
+        icon.innerHTML = "🌈";
+        name.innerHTML = "Rainbow Party!<br>🌈🎀🎉";
+        bottom.innerHTML = "🌈🌈🌈🌈🌈";
+      }
     }
   </script>
 </body>
