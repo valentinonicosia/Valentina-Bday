@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Valentina's 11th Birthday Party! 🐷🎉</title>
+  <title>Valentina's 11th Birthday Party! 🎉</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
@@ -38,16 +38,16 @@
       100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
 
-    .pig-balloon {
+    .floating-icon {
       position: fixed;
       bottom: -120px;
       font-size: 44px;
       z-index: 1;
-      animation: floatPig linear infinite;
+      animation: floatIcon linear infinite;
       pointer-events: none;
     }
 
-    @keyframes floatPig {
+    @keyframes floatIcon {
       0% { transform: translateY(0) rotate(0deg); opacity: 0; }
       10% { opacity: 1; }
       100% { transform: translateY(-125vh) rotate(18deg); opacity: 0; }
@@ -134,25 +134,28 @@
 
     .theme-buttons {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       margin: 20px 0;
     }
 
     .theme-buttons button {
       border: none;
-      border-radius: 16px;
-      padding: 12px 10px;
-      font-weight: 900;
-      font-size: 15px;
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 34px;
       cursor: pointer;
-      color: white;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 18px rgba(0,0,0,.12);
+      transition: transform .2s ease;
+    }
+
+    .theme-buttons button:hover {
+      transform: scale(1.08);
     }
 
     .bunny-btn { background: #b983ff; }
     .piggy-btn { background: #f9739a; }
-    .sparkly-btn { background: #f7b801; color: #6b3b00 !important; }
+    .sparkly-btn { background: #f7b801; }
     .rainbow-btn { background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff); }
 
     .funny-msg {
@@ -292,7 +295,7 @@
       font-weight: 700;
     }
 
-    .bottom-pigs {
+    .bottom-icons {
       text-align: center;
       font-size: 30px;
       margin-top: 22px;
@@ -329,7 +332,9 @@
     }
 
     body.bunny .main-title,
-    body.bunny .detail-value {
+    body.bunny .detail-value,
+    body.bunny .funny-msg p,
+    body.bunny .countdown-time {
       color: #7b3fc4;
     }
 
@@ -342,11 +347,6 @@
     body.bunny .funny-msg {
       background: #efe1ff;
       border-color: #c8a2ff;
-    }
-
-    body.bunny .funny-msg p,
-    body.bunny .countdown-time {
-      color: #7b3fc4;
     }
 
     body.sparkly {
@@ -402,6 +402,8 @@
       .details-grid { grid-template-columns: 1fr; }
       .detail-card.full { grid-column: auto; }
       .countdown-time { font-size: 21px; }
+      .theme-buttons { gap: 8px; }
+      .theme-buttons button { font-size: 28px; padding: 12px; }
     }
   </style>
 </head>
@@ -417,16 +419,16 @@
       </div>
 
       <div class="title-block">
-        <div class="subtitle">✨ Join us for a ✨</div>
-        <div class="main-title" id="mainTitle">Valentina's<br>Piggy Party!</div>
+        <div class="subtitle">✨ Join us for ✨</div>
+        <div class="main-title" id="mainTitle">Valentina's<br>Birthday Party!</div>
         <div class="age-badge">🎉 Turning 11! 🎉</div>
       </div>
 
       <div class="theme-buttons">
-        <button class="bunny-btn" onclick="setTheme('bunny')">🐰 Bunny Theme</button>
-        <button class="piggy-btn" onclick="setTheme('piggy')">🐷 Piggy Theme</button>
-        <button class="sparkly-btn" onclick="setTheme('sparkly')">✨ Sparkly Theme</button>
-        <button class="rainbow-btn" onclick="setTheme('rainbow')">🌈 Rainbow Theme</button>
+        <button class="piggy-btn" onclick="setTheme('piggy')">🐷</button>
+        <button class="bunny-btn" onclick="setTheme('bunny')">🐰</button>
+        <button class="sparkly-btn" onclick="setTheme('sparkly')">✨</button>
+        <button class="rainbow-btn" onclick="setTheme('rainbow')">🌈</button>
       </div>
 
       <div class="funny-msg">
@@ -480,7 +482,7 @@
         <div class="rsvp-note">Please reply soon so we can save your spot! 🎀</div>
       </div>
 
-      <div class="bottom-pigs" id="bottomIcons">🐷🐷🐷🐷🐷</div>
+      <div class="bottom-icons" id="bottomIcons">🐷🐷🐷🐷🐷</div>
       <div class="stars">★ ★ ★ ★ ★ ★ ★</div>
 
     </div>
@@ -511,13 +513,19 @@
     }
 
     for (let i = 0; i < 12; i++) {
-      const balloon = document.createElement('div');
-      balloon.className = 'pig-balloon';
-      balloon.textContent = '🐷🎈';
-      balloon.style.left = Math.random() * 100 + '%';
-      balloon.style.animationDuration = (Math.random() * 8 + 10) + 's';
-      balloon.style.animationDelay = Math.random() * 10 + 's';
-      document.body.appendChild(balloon);
+      const icon = document.createElement('div');
+      icon.className = 'floating-icon';
+      icon.textContent = '🐷🎈';
+      icon.style.left = Math.random() * 100 + '%';
+      icon.style.animationDuration = (Math.random() * 8 + 10) + 's';
+      icon.style.animationDelay = Math.random() * 10 + 's';
+      document.body.appendChild(icon);
+    }
+
+    function updateFloatingIcons(icon) {
+      document.querySelectorAll('.floating-icon').forEach(el => {
+        el.textContent = icon;
+      });
     }
 
     function updateCountdown() {
@@ -551,42 +559,46 @@
       const name = document.getElementById('themeName');
       const bottom = document.getElementById('bottomIcons');
 
-      if (theme === 'bunny') {
-        document.documentElement.style.setProperty('--side-icon', "'🐰'");
-        title.innerHTML = "Valentina's<br>Bunny Party!";
-        message.innerHTML = "Hop on over for birthday fun! 🐰🎀✨";
-        icon.innerHTML = "🐰";
-        name.innerHTML = "Bunny Party!<br>🐰🎀🌸";
-        bottom.innerHTML = "🐰🐰🐰🐰🐰";
-      }
+      title.innerHTML = "Valentina's<br>Birthday Party!";
 
       if (theme === 'piggy') {
         document.documentElement.style.setProperty('--side-icon', "'🐷'");
-        title.innerHTML = "Valentina's<br>Piggy Party!";
         message.innerHTML = "I really hope you can come and enjoy! 🥰🐷🎀";
         icon.innerHTML = "🐷";
         name.innerHTML = "Piggy Party!<br>🐷🎀🌸";
         bottom.innerHTML = "🐷🐷🐷🐷🐷";
+        updateFloatingIcons('🐷🎈');
+      }
+
+      if (theme === 'bunny') {
+        document.documentElement.style.setProperty('--side-icon', "'🐰'");
+        message.innerHTML = "Hop on over for birthday fun! 🐰🎀✨";
+        icon.innerHTML = "🐰";
+        name.innerHTML = "Bunny Party!<br>🐰🎀🌸";
+        bottom.innerHTML = "🐰🐰🐰🐰🐰";
+        updateFloatingIcons('🐰🎈');
       }
 
       if (theme === 'sparkly') {
         document.documentElement.style.setProperty('--side-icon', "'✨'");
-        title.innerHTML = "Valentina's<br>Sparkly Party!";
         message.innerHTML = "Get ready for sparkles, smiles and birthday magic! ✨🎀💖";
         icon.innerHTML = "✨";
         name.innerHTML = "Sparkly Party!<br>✨🎀💖";
         bottom.innerHTML = "✨✨✨✨✨";
+        updateFloatingIcons('✨💖');
       }
 
       if (theme === 'rainbow') {
         document.documentElement.style.setProperty('--side-icon', "'🌈'");
-        title.innerHTML = "Valentina's<br>Rainbow Party!";
         message.innerHTML = "A colorful birthday party full of fun! 🌈🎉💖";
         icon.innerHTML = "🌈";
         name.innerHTML = "Rainbow Party!<br>🌈🎀🎉";
         bottom.innerHTML = "🌈🌈🌈🌈🌈";
+        updateFloatingIcons('🌈⭐');
       }
     }
+
+    setTheme('piggy');
   </script>
 </body>
 </html>
