@@ -1,96 +1,453 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Valentina's 10th Birthday Party! 🐷🎉</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentina's 11th Birthday Party! 🐷🎉</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #fce8f0; font-family: 'Nunito', sans-serif; min-height: 100vh; }
-    .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-    .confetti-piece { position: absolute; animation: fall linear infinite; opacity: 0.7; }
-    @keyframes fall { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
-    .page { max-width: 600px; margin: 0 auto; padding: 24px 16px 40px; position: relative; z-index: 1; }
-    .card { background: #fff5f8; border-radius: 32px; border: 3px solid #f9c2d4; padding: 32px 28px 36px; }
-    .top-banner { background: #f9739a; border-radius: 20px; padding: 10px 20px; text-align: center; margin-bottom: 24px; position: relative; overflow: hidden; }
-    .top-banner::before { content: '🐷'; font-size: 18px; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); }
-    .top-banner::after { content: '🐷'; font-size: 18px; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); }
-    .top-banner p { font-family: 'Fredoka One', cursive; color: #fff; font-size: 15px; letter-spacing: 2px; }
-    .title-block { text-align: center; margin-bottom: 24px; }
-    .subtitle { font-family: 'Fredoka One', cursive; color: #f9739a; font-size: 16px; letter-spacing: 1px; margin-bottom: 4px; }
-    .main-title { font-family: 'Fredoka One', cursive; color: #d94f7c; font-size: 46px; line-height: 1.1; margin-bottom: 8px; }
-    .age-badge { display: inline-block; background: #f9739a; color: #fff; font-family: 'Fredoka One', cursive; font-size: 28px; padding: 6px 24px; border-radius: 50px; }
-    .funny-msg { background: #ffd6e8; border-radius: 16px; padding: 14px 20px; text-align: center; margin: 18px 0; border: 2px dashed #f9a8cb; }
-    .funny-msg p { font-size: 17px; color: #c0325e; font-weight: 700; line-height: 1.4; }
-    .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
-    .detail-card { background: #fff; border-radius: 18px; padding: 14px 16px; border: 2px solid #fad0e0; text-align: center; }
-    .detail-card.full { grid-column: 1 / -1; }
-    .detail-icon { font-size: 26px; margin-bottom: 4px; display: block; }
-    .detail-label { font-size: 11px; color: #f9739a; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
-    .detail-value { font-size: 15px; color: #c0325e; font-weight: 700; line-height: 1.3; }
-    .detail-value a { color: #e84e82; text-decoration: none; font-weight: 800; }
-    .rsvp-section { background: #f9739a; border-radius: 20px; padding: 18px 20px; text-align: center; margin-top: 20px; }
-    .rsvp-title { font-family: 'Fredoka One', cursive; color: #fff; font-size: 20px; margin-bottom: 8px; }
-    .rsvp-phone { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: 1px; text-decoration: none; display: block; }
-    .rsvp-note { font-size: 13px; color: #ffd6e8; margin-top: 6px; font-weight: 600; }
-    .bottom-pigs { text-align: center; font-size: 28px; margin-top: 20px; letter-spacing: 6px; animation: wiggle 2s ease-in-out infinite; }
-    @keyframes wiggle { 0%, 100% { letter-spacing: 6px; } 50% { letter-spacing: 10px; } }
-    .stars { text-align: center; font-size: 16px; letter-spacing: 4px; margin: 8px 0 0; color: #f9c2d4; }
+
+    body {
+      background: linear-gradient(180deg, #ffe6f1, #fff6fb);
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .confetti-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      animation: fall linear infinite;
+      opacity: 0.75;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-30px) rotate(0deg); opacity: 0.9; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    .pig-balloon {
+      position: fixed;
+      bottom: -120px;
+      font-size: 44px;
+      z-index: 1;
+      animation: floatPig linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatPig {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-125vh) rotate(18deg); opacity: 0; }
+    }
+
+    .page {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 24px 16px 42px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: #fff5f9;
+      border-radius: 34px;
+      border: 3px solid #f9bdd4;
+      padding: 32px 26px 36px;
+      box-shadow: 0 18px 45px rgba(211, 66, 119, 0.16);
+    }
+
+    .top-banner {
+      background: #f9739a;
+      border-radius: 22px;
+      padding: 12px 20px;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .top-banner::before {
+      content: '🐷';
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .top-banner::after {
+      content: '🐷';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .top-banner p {
+      font-family: 'Fredoka One', cursive;
+      color: white;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+
+    .title-block {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-family: 'Fredoka One', cursive;
+      color: #f9739a;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .main-title {
+      font-family: 'Fredoka One', cursive;
+      color: #d94f7c;
+      font-size: 46px;
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .age-badge {
+      display: inline-block;
+      background: #f9739a;
+      color: white;
+      font-family: 'Fredoka One', cursive;
+      font-size: 25px;
+      padding: 8px 24px;
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(249, 115, 154, 0.35);
+    }
+
+    .funny-msg {
+      background: #ffd8e9;
+      border-radius: 18px;
+      padding: 15px 18px;
+      text-align: center;
+      margin: 20px 0;
+      border: 2px dashed #f9a8cb;
+    }
+
+    .funny-msg p {
+      font-size: 17px;
+      color: #c0325e;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .countdown {
+      background: white;
+      border: 2px solid #fad0e0;
+      border-radius: 20px;
+      padding: 18px;
+      text-align: center;
+      margin: 18px 0;
+    }
+
+    .countdown-title {
+      color: #f9739a;
+      font-weight: 900;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .countdown-time {
+      font-family: 'Fredoka One', cursive;
+      color: #c0325e;
+      font-size: 25px;
+    }
+
+    .music-btn {
+      margin-top: 14px;
+      background: #f9739a;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(249, 115, 154, 0.28);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .detail-card {
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
+      border: 2px solid #fad0e0;
+      text-align: center;
+    }
+
+    .detail-card.full {
+      grid-column: 1 / -1;
+    }
+
+    .detail-icon {
+      font-size: 28px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      color: #f9739a;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 15px;
+      color: #c0325e;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .detail-value a {
+      color: #e84e82;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .map-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: #ffd8e9;
+      color: #c0325e;
+      padding: 10px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .rsvp-section {
+      background: #f9739a;
+      border-radius: 24px;
+      padding: 22px 18px;
+      text-align: center;
+      margin-top: 20px;
+      box-shadow: 0 10px 24px rgba(249, 115, 154, 0.25);
+    }
+
+    .rsvp-title {
+      font-family: 'Fredoka One', cursive;
+      color: white;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background: white;
+      color: #25D366;
+      padding: 14px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .phone-small {
+      color: white;
+      font-weight: 800;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .rsvp-note {
+      font-size: 13px;
+      color: #ffe3ef;
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    .bottom-pigs {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 22px;
+      letter-spacing: 6px;
+      animation: wiggle 2s ease-in-out infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { letter-spacing: 6px; }
+      50% { letter-spacing: 11px; }
+    }
+
+    .stars {
+      text-align: center;
+      font-size: 16px;
+      letter-spacing: 4px;
+      margin-top: 8px;
+      color: #f9a8cb;
+    }
+
+    @media (max-width: 420px) {
+      .card { padding: 28px 18px 32px; }
+      .main-title { font-size: 38px; }
+      .age-badge { font-size: 21px; }
+      .details-grid { grid-template-columns: 1fr; }
+      .detail-card.full { grid-column: auto; }
+      .countdown-time { font-size: 21px; }
+    }
   </style>
 </head>
+
 <body>
   <div class="confetti-container" id="confetti"></div>
+
   <div class="page">
     <div class="card">
-      <div class="top-banner"><p>YOU'RE INVITED!</p></div>
+
+      <div class="top-banner">
+        <p>YOU'RE INVITED!</p>
+      </div>
+
       <div class="title-block">
-        <div class="subtitle">✨ Join us for ✨</div>
-        <div class="main-title">Valentina's<br>Birthday!</div>
-        <div class="age-badge">🎉 Turning 10! 🎉</div>
+        <div class="subtitle">✨ Join us for a ✨</div>
+        <div class="main-title">Valentina's<br>Piggy Party!</div>
+        <div class="age-badge">🎉 Turning 11! 🎉</div>
       </div>
+
       <div class="funny-msg">
-        <p>I really hope you can come and enjoy! 🥰🥰🥰🥰🥰</p>
+        <p>I really hope you can come and enjoy! 🥰🐷🎀</p>
       </div>
+
+      <div class="countdown">
+        <div class="countdown-title">🎂 Countdown to Valentina's party!</div>
+        <div class="countdown-time" id="countdown">Loading...</div>
+        <button class="music-btn" onclick="playBirthdaySong()">🎵 Play Party Music</button>
+      </div>
+
       <div class="details-grid">
         <div class="detail-card">
           <span class="detail-icon">📅</span>
           <div class="detail-label">When</div>
-          <div class="detail-value">Saturday,<br>June 21, 2026</div>
+          <div class="detail-value">Sunday,<br>June 21, 2026</div>
         </div>
+
         <div class="detail-card">
-          <span class="detail-icon">🎈</span>
-          <div class="detail-label">Party theme</div>
+          <span class="detail-icon">🐷</span>
+          <div class="detail-label">Theme</div>
           <div class="detail-value">Piggy Party!<br>🐷🎀🌸</div>
         </div>
+
         <div class="detail-card full">
           <span class="detail-icon">📍</span>
           <div class="detail-label">Where</div>
           <div class="detail-value">
             <a href="https://destordeur.be/" target="_blank">Klimzaal De Stordeur 🧗</a><br>
-            <span style="font-size:13px; font-weight:600; color:#d06; opacity:0.8;">Aarschotsesteenweg 112, 3012 Wilsele</span>
+            Aarschotsesteenweg 112<br>
+            3012 Wilsele
+            <br>
+            <a class="map-btn" href="https://maps.google.com/?q=Aarschotsesteenweg+112+3012+Wilsele" target="_blank">
+              📍 Open in Maps
+            </a>
           </div>
         </div>
       </div>
+
       <div class="rsvp-section">
         <div class="rsvp-title">🐷 RSVP — Let us know you're coming!</div>
-        <a href="tel:0032472842331" class="rsvp-phone">📞 0032 472 842 331</a>
-        <div class="rsvp-note">Please reply soon so we save your spot! 🎀</div>
+
+        <a
+          class="whatsapp-btn"
+          href="https://wa.me/32472842331?text=Hi!%20I%20would%20love%20to%20come%20to%20Valentina's%20Piggy%20Party!%20🐷🎉"
+          target="_blank">
+          💬 RSVP via WhatsApp
+        </a>
+
+        <div class="phone-small">0032 472 842 331</div>
+        <div class="rsvp-note">Please reply soon so we can save your spot! 🎀</div>
       </div>
+
       <div class="bottom-pigs">🐷🐷🐷🐷🐷</div>
       <div class="stars">★ ★ ★ ★ ★ ★ ★</div>
+
     </div>
   </div>
+
   <script>
-    const colors = ['#f9739a','#fad0e0','#f9c2d4','#ffd6e8','#e84e82','#ffb3d0','#c0325e'];
+    const colors = ['#f9739a', '#fad0e0', '#f9c2d4', '#ffd6e8', '#e84e82', '#ffb3d0', '#c0325e'];
     const container = document.getElementById('confetti');
-    for (let i = 0; i < 40; i++) {
+
+    for (let i = 0; i < 50; i++) {
       const el = document.createElement('div');
       el.className = 'confetti-piece';
+
       const size = Math.random() * 8 + 5;
-      el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*-20}%;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${Math.random()*5+4}s;animation-delay:${Math.random()*6}s;border-radius:${Math.random()>0.5?'50%':'2px'};`;
+
+      el.style.cssText = `
+        left:${Math.random() * 100}%;
+        top:${Math.random() * -20}%;
+        width:${size}px;
+        height:${size}px;
+        background:${colors[Math.floor(Math.random() * colors.length)]};
+        animation-duration:${Math.random() * 5 + 4}s;
+        animation-delay:${Math.random() * 6}s;
+        border-radius:${Math.random() > 0.5 ? '50%' : '2px'};
+      `;
+
       container.appendChild(el);
+    }
+
+    for (let i = 0; i < 12; i++) {
+      const pig = document.createElement('div');
+      pig.className = 'pig-balloon';
+      pig.textContent = '🐷🎈';
+      pig.style.left = Math.random() * 100 + '%';
+      pig.style.animationDuration = (Math.random() * 8 + 10) + 's';
+      pig.style.animationDelay = Math.random() * 10 + 's';
+      document.body.appendChild(pig);
+    }
+
+    function updateCountdown() {
+      const partyDate = new Date('2026-06-21T14:00:00');
+      const now = new Date();
+      const diff = partyDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = "🎉 It's Party Time! 🎉";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('countdown').innerHTML =
+        `${days}d ${hours}h ${mins}m ${secs}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function playBirthdaySong() {
+      const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+      audio.play();
     }
   </script>
 </body>
 </html>
+```
